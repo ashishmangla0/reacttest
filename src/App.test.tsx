@@ -11,14 +11,17 @@ test("should render an input",()=>{
   render(<App/>);
   const input = screen.getByLabelText('name');
   expect(input).toBeInTheDocument();
-})
+});
 test("should call the onSubmit",()=>{
+  
   const onSubmit = jest.fn();
   render(<App onSubmit={onSubmit}/>);
+
   const input = screen.getByLabelText('name');
   fireEvent.change(input,{target:{value:"mangla"}});
 
   const button = screen.getByRole("button");
   fireEvent.click(button);
   expect(onSubmit).toBeCalledTimes(1);
-})
+
+});
